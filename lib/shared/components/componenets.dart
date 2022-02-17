@@ -1,49 +1,51 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/modules/colorMatch_module/colorsCsvFile.dart';
 import 'package:graduation_project/modules/colorMatch_module/matched_colors.dart';
 
+// ignore: non_constant_identifier_names
 Widget Answer({
   //chatbot answer shape
   @required String message,
 }) =>
     Container(
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          // ignore: sized_box_for_whitespace
           Container(
-            height: 55,
-            width: 55,
-            child: CircleAvatar(
-              backgroundImage: AssetImage(
-                  "assets/images/robot1.png"),
+            height: 55.h,
+            width: 55.w,
+            child: const CircleAvatar(
+              backgroundImage: AssetImage("assets/images/robot1.png"),
             ),
           ),
-
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0.sp),
             child: Bubble(
-                radius: Radius.circular(17.0),
-                color: Color.fromRGBO(42,65,88, 0.9),
+                radius: Radius.circular(17.0.r),
+                color: const Color.fromRGBO(42, 65, 88, 0.9),
                 elevation: 0.0,
                 child: Padding(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(5.0.sp),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Flexible(
                           child: Container(
-                            constraints: BoxConstraints(maxWidth: 250),
-                            child: Text(
-                              message,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                          ))
+                        constraints: BoxConstraints(maxWidth: 250.w),
+                        child: Text(
+                          message,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ))
                     ],
                   ),
                 )),
@@ -58,48 +60,53 @@ Widget send({
   @required Function function,
 }) =>
     Container(
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0.sp),
             child: Bubble(
-                radius: Radius.circular(17.0),
-                color: Color.fromRGBO(112, 128, 144, 1.0),
+                radius: Radius.circular(17.0.r),
+                color: const Color.fromRGBO(112, 128, 144, 1.0),
                 elevation: 0.0,
                 child: Padding(
-                  padding: EdgeInsets.all(3.0),
+                  padding: EdgeInsets.all(3.0.sp),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Flexible(
                           child: Container(
-                            constraints: BoxConstraints(maxWidth: 250),
-                            child: Container(
-                              height: 28.0,
-                              child: MaterialButton(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 2.0, horizontal: 2.0),
-                                  // minWidth: double.infinity,
-                                  onPressed: function,
-                                  child: Text(
-                                    message,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  )),
-                            ),
-                          ))
+                        constraints: BoxConstraints(maxWidth: 250.w),
+                        // ignore: sized_box_for_whitespace
+                        child: Container(
+                          height: 28.0.h,
+                          child: MaterialButton(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 2.0.h,
+                                horizontal: 2.0.w,
+                              ),
+                              // minWidth: double.infinity,
+                              onPressed: function,
+                              child: Text(
+                                message,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.sp,
+                                ),
+                              )),
+                        ),
+                      ))
                     ],
                   ),
                 )),
           ),
+          // ignore: sized_box_for_whitespace
           Container(
-            height: 55,
-            width: 55,
-            child: CircleAvatar(
+            height: 55.h,
+            width: 55.w,
+            child: const CircleAvatar(
               backgroundImage: AssetImage("assets/images/u6.jpeg"),
             ),
           ),
@@ -114,53 +121,54 @@ Widget about({
   double text_size,
 }) =>
     Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 80.0,
-          horizontal: 40.0,
-        ),
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(35.0),
-                  child: Text(
-                    '${data}',
-                    style: TextStyle(
-                      fontSize: text_size,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black87,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 80.0.sp,
+            horizontal: 40.0.sp,
+          ),
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.all(35.0.sp),
+                    child: Text(
+                      data,
+                      style: TextStyle(
+                        fontSize: text_size,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black87,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          /*  decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50.0),
-            color: Color.fromRGBO(115, 147, 179, 0.05),
-            border: Border.all(color: Colors.grey.withOpacity(0.08)),
-          ),*/
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade400,
-                spreadRadius:2,
-                blurRadius:2,
-                offset: Offset(4,5),
-
-              ),
-            ],
-            borderRadius: BorderRadius.circular(40.0),
-
+              ],
+            ),
+            /*  decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              color: Color.fromRGBO(115, 147, 179, 0.05),
+              border: Border.all(color: Colors.grey.withOpacity(0.08)),
+            ),*/
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade400,
+                  spreadRadius: 2.r,
+                  blurRadius: 2.r,
+                  offset: Offset(4.w, 5.h),
+                ),
+              ],
+              borderRadius: BorderRadius.circular(40.0.r),
+            ),
           ),
         ),
       ),
     );
+
 // buttons for test
 
 Widget AnswerButton({
@@ -197,7 +205,7 @@ Widget ShowResultButton({
         onPressed: () {
           function;
         },
-        child: Text(
+        child: const Text(
           'Show Result',
         ),
       ),
@@ -210,67 +218,54 @@ Widget ShowResultButton({
     );
 
 Widget buildReport(
-    String image,
-    String textAnswer,
-    String textNormal,
-    String textBlind,
-    ) =>
+  String image,
+  String textAnswer,
+  String textNormal,
+  String textBlind,
+) =>
     Row(
       children: [
         Container(
-          width: 120.0,
-          height: 120.0,
+          width: 120.0.r,
+          height: 120.0.r,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(70),
-            border: Border.all(color: Colors.grey[300],
-                width: 10),
-            image:
-            DecorationImage(
-              //scale: 0.1,
+            borderRadius: BorderRadius.circular(70.r),
+            border: Border.all(
+              color: Colors.grey[300],
+              width: 10.w,
+            ),
+            image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
                 image,
-                //questions[index].image,
               ),
-              //fit: BoxFit.cover,
             ),
           ),
         ),
-        // const SizedBox(
-        //   width: 10.0,
-        // ),
-
         Expanded(
+          // ignore: sized_box_for_whitespace
           child: Container(
-
-            height: 110.0,
+            height: 110.0.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Expanded(
                   child: Text(
                     textAnswer,
-                    //'Your answer : ' + ans[index],
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+                      fontSize: 16.0.sp,
                     ),
                   ),
                 ),
                 Expanded(
                   child: Text(
                     textNormal,
-                    //'Normal view : ' +
-                    //    questions[index].answer.keys.firstWhere(
-                    //        (k) =>
-                    //            questions[index].answer[k].toString() == 'true',
-                    //        orElse: () => null),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.0,
+                      fontSize: 15.0.sp,
                     ),
                     maxLines: 3,
                   ),
@@ -278,10 +273,9 @@ Widget buildReport(
                 Expanded(
                   child: Text(
                     textBlind,
-                    //'Color blindness : ' + questions[index].colorBlind,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.0,
+                      fontSize: 15.0.sp,
                     ),
                   ),
                 ),
@@ -293,55 +287,58 @@ Widget buildReport(
     );
 
 Widget DividerReport() => Padding(
-  padding: const EdgeInsets.all(10.0),
-  child: Container(
-    width: double.infinity,
-    height: 1.0,
-    color: Colors.grey[300],
-  ),
-);
+      padding: EdgeInsets.all(10.0.sp),
+      child: Container(
+        width: double.infinity.w,
+        height: 1.0.h,
+        color: Colors.grey[300],
+      ),
+    );
+
 //////////////////////////////////    //////////////////////////////////////
+
 var colorName;
 bool visibleMatchedButton = true;
 Widget colorList(
-    List model,
-    context,
-    ) =>
-
+  List model,
+  context,
+) =>
     Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0.sp),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0),
+        padding: EdgeInsets.only(left: 8.0.sp),
         child: Container(
-          width:double.infinity,
+          width: double.infinity.w,
           ///////////////Hight el container bta3 el matching//////////////////////////////
-          height: 100,
+          height: 100.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
+              borderRadius: BorderRadius.circular(15.0.r),
               color: Colors.grey[300]),
           child: Row(
             children: [
               ///////////////////////////////Circle avatar el color////////////////////////////////
               Padding(
-                padding: const EdgeInsets.only(left:8.0),
+                padding: EdgeInsets.only(left: 8.0.r),
                 child: CircleAvatar(
                   backgroundColor: Color(model[2]),
-                  radius: 42.0,
+                  radius: 42.0.r,
                 ),
               ),
               SizedBox(
-                width: 10,
+                width: 10.w,
               ),
               Expanded(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0.sp),
                         child: Text(
                           '${model[1]}',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0.sp,
+                          ),
                         ),
                       ),
                       Text(
@@ -352,13 +349,12 @@ Widget colorList(
                     ]),
               ),
 
-
               Padding(
-                padding: const EdgeInsets.only(right: 10.0, bottom: 15),
+                padding: EdgeInsets.only(right: 10.0.sp, bottom: 15.sp),
                 child: Visibility(
                   visible: visibleMatchedButton,
                   child: Padding(
-                    padding: const EdgeInsets.only(right:1.0),
+                    padding: EdgeInsets.only(right: 1.0.sp),
                     child: Row(
                       children: [
                         IconButton(
@@ -366,7 +362,7 @@ Widget colorList(
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder:(context)=> matched_colors(),
+                                builder: (context) => matched_colors(),
                               ),
                             );
                             colorName = model[1];
@@ -375,77 +371,72 @@ Widget colorList(
                                 matched.insert(0, data[i]);
                                 visibleMatchedButton = false;
                               }
-
                             }
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.arrow_forward_ios,
-                            size: 45,
-                            color: Colors.blueGrey,
+                            size: 45.sp,
+                            color: const Color.fromRGBO(42, 65, 88, 1.0),
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),],
+              ),
+            ],
           ),
         ),
       ),
     );
-
 
 Widget CardMenu({
   @required String title,
   @required String icon,
   Function onTap,
   Color fontColor = Colors.black,
-  Color color ,
+  Color color,
   //Color color ,
-})=>
+}) =>
     GestureDetector(
       onTap: onTap,
       child: Container(
-
-        width: 175,
-        height:165,
+        width: 175.r,
+        height: 165.r,
         decoration: BoxDecoration(
-          color: color= Colors.grey[200],
+          color: color = Colors.grey[200],
           boxShadow: [
             BoxShadow(
               color: Colors.grey.shade400,
-              spreadRadius:2,
-              blurRadius:2,
-              offset: Offset(4,5),
-
+              spreadRadius: 2.r,
+              blurRadius: 2.r,
+              offset: Offset(4.h, 5.w),
             ),
           ],
-
-          borderRadius: BorderRadius.circular(35.0),
-
+          borderRadius: BorderRadius.circular(35.0.r),
         ),
         child: Column(
           children: [
-
             Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20.0,),
-              child:
-              Image.asset(icon,width: 65,height:65 ,),
+              padding: EdgeInsets.symmetric(
+                vertical: 20.0.w,
+              ),
+              child: Image.asset(
+                icon,
+                width: 65.sp,
+                height: 65.sp,
+              ),
             ),
-
-            Text(title,
+            Text(
+              title,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
-                fontSize: 20.0,
+                fontSize: 20.0.sp,
                 //fontFamily: 'valera',
                 color: fontColor,
               ),
             ),
-
           ],
-
         ),
       ),
-
     );
