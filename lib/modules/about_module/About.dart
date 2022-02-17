@@ -34,6 +34,7 @@ class _AboutState extends State<About> {
             ),
           ),
           backgroundColor: const Color.fromRGBO(42, 65, 88, 1.0),
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(10.r),

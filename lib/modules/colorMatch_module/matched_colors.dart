@@ -18,6 +18,7 @@ class matched_colors extends StatelessWidget {
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light,
           ),
+
           backgroundColor: const Color.fromRGBO(42, 65, 88, 1.0),
           title: Text(
             '$colorName',
