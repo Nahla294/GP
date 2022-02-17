@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/layout/HomePage.dart';
 import 'package:graduation_project/models/test_data_list.dart';
 import 'package:graduation_project/modules/test_module/result_screen.dart';
@@ -13,10 +14,10 @@ class TestScreen extends StatefulWidget {
 
 class _TestState extends State<TestScreen> {
   // ignore: prefer_final_fields
-  PageController _controller = PageController(initialPage: 0);
+  PageController _controller = PageController();
   bool isPressed = false;
-  Color isTrue = Color.fromRGBO(42,65,88, 1.0);
-  Color isWrong = Color.fromRGBO(112, 128, 144, 1.0);
+  Color isTrue = const Color.fromRGBO(42, 65, 88, 1.0);
+  Color isWrong = const Color.fromRGBO(112, 128, 144, 1.0);
   int score = 0;
   // ignore: deprecated_member_use
   List ans = List(38);
@@ -30,34 +31,42 @@ class _TestState extends State<TestScreen> {
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: Size.fromHeight(60.sp),
         child: AppBar(
+          // ignore: deprecated_member_use
           backwardsCompatibility: false,
-          systemOverlayStyle: SystemUiOverlayStyle( statusBarBrightness: Brightness.light,),
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarBrightness: Brightness.light,
+          ),
           automaticallyImplyLeading: false,
-          title: Text('ColorBlindness Test',style: TextStyle(
-            fontSize: 23,
-            fontWeight: FontWeight.w500,
-
-          ),),
-          backgroundColor:Color.fromRGBO(42,65,88, 1.0),
+          title: Text(
+            'ColorBlindness Test',
+            style: TextStyle(
+              fontSize: 23.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          backgroundColor: const Color.fromRGBO(42, 65, 88, 1.0),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(bottomRight:Radius.circular(10),bottomLeft:Radius.circular(10) ),
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(10.r),
+              bottomLeft: Radius.circular(10.r),
+            ),
           ),
 
           ////////////////////////////HOME BUTTON/////////////////////////////
           actions: [
             Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(5.0.sp),
               child: IconButton(
                 color: Colors.white,
-                iconSize: 35,
+                iconSize: 35.sp,
                 icon: const Icon(Icons.home_rounded),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomePage(),
+                      builder: (context) => const HomePage(),
                     ),
                   );
                 },
@@ -67,7 +76,7 @@ class _TestState extends State<TestScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0.sp),
         child: PageView.builder(
           physics: const NeverScrollableScrollPhysics(),
           controller: _controller,
@@ -83,29 +92,26 @@ class _TestState extends State<TestScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 60.0,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
+                  SizedBox(
+                    height: 80.0.h,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(7.0),
+                    padding: EdgeInsets.all(7.0.sp),
                     child: Text(
                       questions[index].question,
-                      style: const TextStyle(
-                        fontSize: 26.0,
+                      style: TextStyle(
+                        fontSize: 26.0.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 40.0,
+                  SizedBox(
+                    height: 40.0.h,
                   ),
                   Image(
-                    width: 233.0,
-                    height: 233.0,
+                    width: 233.0.r,
+                    height: 233.0.r,
                     image: AssetImage(
                       questions[index].image,
                     ),
@@ -120,7 +126,7 @@ class _TestState extends State<TestScreen> {
                           icon: const Icon(
                             Icons.arrow_forward_ios,
                           ),
-                          iconSize: 50.0,
+                          iconSize: 50.0.sp,
                           color: Colors.black,
                           onPressed: isPressed
                               ? index + 1 == questions.length
@@ -147,13 +153,13 @@ class _TestState extends State<TestScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: 20.h,
                   ),
                   Visibility(
                     visible: !Arrowshow,
-                    child: const SizedBox(
-                      height: 60,
+                    child: SizedBox(
+                      height: 60.h,
                     ),
                   ),
                   Column(
@@ -163,11 +169,11 @@ class _TestState extends State<TestScreen> {
                       for (int i = 0; i < questions[index].answer.length; i++)
                         // ignore: sized_box_for_whitespace
                         Container(
-                          width: 350.0,
-                          margin: const EdgeInsets.only(bottom: 18.0),
+                          width: 350.0.w,
+                          margin: EdgeInsets.only(bottom: 18.0.sp),
                           child: MaterialButton(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                              borderRadius: BorderRadius.circular(20.0.r),
                             ),
                             color: isPressed
                                 ? questions[index]
@@ -177,8 +183,8 @@ class _TestState extends State<TestScreen> {
                                         .value
                                     ? isTrue
                                     : isWrong
-                                : Color.fromRGBO(112, 128, 144, 1.0),
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                                : const Color.fromRGBO(112, 128, 144, 1.0),
+                            padding: EdgeInsets.symmetric(vertical: 20.0.w),
                             onPressed: isPressed
                                 ? () {}
                                 : () {
@@ -217,9 +223,9 @@ class _TestState extends State<TestScreen> {
                                   },
                             child: Text(
                               questions[index].answer.keys.toList()[i],
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontSize: 18.0.sp,
                               ),
                             ),
                           ),
@@ -232,24 +238,24 @@ class _TestState extends State<TestScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 15),
+                          padding: EdgeInsets.only(right: 15.sp),
                           // ignore: sized_box_for_whitespace
                           child: Container(
-                            width: 180,
-                            height: 45,
+                            width: 180.sp,
+                            height: 45.sp,
                             child: MaterialButton(
                               elevation: 0.0,
                               color: Colors.white70,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                side: const BorderSide(
-                                  color: Color.fromRGBO(42,65,88, 1.0),
-                                  width: 2,
+                                borderRadius: BorderRadius.circular(15.r),
+                                side: BorderSide(
+                                  color: const Color.fromRGBO(42, 65, 88, 1.0),
+                                  width: 2.w,
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0,
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0.w,
+                                horizontal: 10.0.h,
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -260,11 +266,11 @@ class _TestState extends State<TestScreen> {
                                   ),
                                 );
                               },
-                              child: const Text(
+                              child: Text(
                                 'Show result',
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                             ),
